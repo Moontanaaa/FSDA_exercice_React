@@ -1,31 +1,43 @@
 import './App.css'
-import Avatar from './avatar'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
 
 
 function App() {
-  const users = [
-    {
-      key : 1,
-      image: 'https://static.wikia.nocookie.net/simpsons/images/a/a1/Marge_Simpsons.png/revision/latest?cb=20130817213926&path-prefix=fr',
-      firstName: "Marge",
-      lastName: "Simpson"
-    },
-    { 
-      key : 2,
-      image: "https://static.wikia.nocookie.net/simpsons/images/3/33/Homer.png/revision/latest?cb=20110703093455&path-prefix=fr",
-      firstName: "Homer",
-      lastName: "Simpson"
+
+  const [users, setUsers] = useState(null)
+  const URL = "https://jsonplaceholder.typicode.com/users"
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get(URL)
+      setUsers(response.data)
     }
-  ]
+    catch (err) {
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
   return (
     <div>
-      <h1>Famille Simpson</h1>
-      <ul>
-        {users.map(user => (
-          <Avatar key={user.firstName} {...user} />
-        ))}
-      </ul>
+      {users && users.map(user => {
+        return (
+          <>
+            <div>
+            <h1>my name is {user.name}</h1>
+            <h2>my email is {user.email}</h2>
+            </div>
+            
+
+          </>
+
+        )
+      })}
     </div>
   )
 }
