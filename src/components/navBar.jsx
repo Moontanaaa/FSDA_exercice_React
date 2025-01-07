@@ -5,10 +5,10 @@ function Navbar() {
     <nav className="bg-gray-800 p-4">
       <ul className="flex space-x-4">
         <li>
-          <Link to="/" className="text-white">Page 1</Link>
+          <Link to="/" className="text-white">Dashbord</Link>
         </li>
         <li>
-          <Link to="/usercard" className="text-white">Page 2</Link>
+          <Link to="/Weather" className="text-white">Météo</Link>
         </li>
       </ul>
     </nav>
