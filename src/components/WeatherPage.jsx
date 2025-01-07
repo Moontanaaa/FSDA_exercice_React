@@ -1,14 +1,18 @@
+
 import { useState } from 'react';
 
 const WeatherPage = () => {
+
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
 
   const API_KEY = 'ec5f933788ec2e550fc16821c27da3f6';
 
+  // Fonction qui gère le formulaire de soumission pour récupérer la météo
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
       );
@@ -42,4 +46,6 @@ const WeatherPage = () => {
   );
 };
 
+
 export default WeatherPage;
+

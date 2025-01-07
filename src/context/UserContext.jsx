@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
       const response = await axios.get('https://randomuser.me/api/?results=21');
       setUsers(response.data.results);
       setLoading(false);
-    } catch (error) {
+    } catch (err) {
       setError('Failed to fetch users');
       setLoading(false);
     }
